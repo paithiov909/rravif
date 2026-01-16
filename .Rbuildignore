@@ -1,0 +1,9 @@
+^rravif\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^README\.qmd$
+
+^src/rust/\.cargo$
+^src/rust/target$
+^src/Makevars$
+^src/Makevars\.win$
