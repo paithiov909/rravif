@@ -44,4 +44,4 @@ writeBin(avif_img, "man/figures/test.avif")
 
 ## License
 
-BSD 3-clause License.
+MIT License.
