@@ -9,7 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-rravif is a package for encoding images in AVIF format with
+rravif is an R package for encoding images in AVIF format with
 [ravif](https://github.com/kornelski/cavif-rs) Rust crate.
 
 ## Usage
@@ -33,7 +33,7 @@ grid::grid.circle(
 
 rast <- cap(native = TRUE)
 dev.off()
-#> pdf 
+#> pdf
 #>   2
 
 avif_img <- encode(rast)

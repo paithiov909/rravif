@@ -9,7 +9,7 @@ crate-type = ["staticlib", "lib"]
 [dependencies]
 ravif = { version = "0.12.0", default-features = false, features = ["threading"] }
 rayon = "*"
-savvy = "0.9.1"
+savvy = "*"
 
 [profile.release]
 # By default, on release build, savvy terminates the R session when a panic

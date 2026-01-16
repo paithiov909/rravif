@@ -1,6 +1,6 @@
 Package: rravif
 Title: AVIF Image Encoder
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre")),
     person("Kornel Lesiński", role = "cph")
