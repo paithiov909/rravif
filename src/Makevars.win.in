@@ -4,7 +4,7 @@ PROFILE = @PROFILE@
 FEATURE_FLAGS = @FEATURE_FLAGS@
 
 # Add flags if necessary
-RUSTFLAGS = -C target-cpu=native
+RUSTFLAGS +=
 
 TARGET_DIR = $(CURDIR)/rust/target
 LIBDIR = $(TARGET_DIR)/$(TARGET)/$(subst dev,debug,$(PROFILE))
