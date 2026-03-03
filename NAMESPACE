@@ -3,4 +3,5 @@
 S3method("$<-",savvy_rravif__sealed)
 S3method("[[<-",savvy_rravif__sealed)
 export(encode)
+export(write_avif)
 useDynLib(rravif, .registration = TRUE)
