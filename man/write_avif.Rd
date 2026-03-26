@@ -7,7 +7,7 @@
 write_avif(nr, path = NULL, quality = 80, speed = 10)
 }
 \arguments{
-\item{nr}{A nativeRaster object.}
+\item{nr}{A \code{nativeRaster} object.}
 
 \item{path}{The path to write the image.}
 

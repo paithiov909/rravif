@@ -1,8 +1,8 @@
 #' Encode an AVIF image
 #'
-#' Encodes an AVIF image from a nativeRaster object.
+#' Encodes an AVIF image from a `nativeRaster` object.
 #'
-#' @param nr A nativeRaster object.
+#' @param nr A `nativeRaster` object.
 #' @param quality The quality of the image.
 #' @param speed The processing speed.
 #' @returns A raw vector containing the encoded image data.

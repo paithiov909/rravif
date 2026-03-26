@@ -7,7 +7,7 @@
 encode(nr, quality = 80, speed = 10)
 }
 \arguments{
-\item{nr}{A nativeRaster object.}
+\item{nr}{A \code{nativeRaster} object.}
 
 \item{quality}{The quality of the image.}
 
@@ -17,5 +17,5 @@ encode(nr, quality = 80, speed = 10)
 A raw vector containing the encoded image data.
 }
 \description{
-Encodes an AVIF image from a nativeRaster object.
+Encodes an AVIF image from a \code{nativeRaster} object.
 }
