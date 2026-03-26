@@ -49,4 +49,15 @@ NULL
   .Call(savvy_encode_avif__impl, `nr`, `height`, `width`, `quality`, `speed`)
 }
 
+#' Print a native raster image to the terminal
+#'
+#' @param nr a native raster image
+#' @param width width
+#' @param height height
+#' @param term_cols terminal width
+#' @noRd
+`print_with_viuer` <- function(`nr`, `height`, `width`, `term_cols`) {
+  .Call(savvy_print_with_viuer__impl, `nr`, `height`, `width`, `term_cols`)
+}
+
 

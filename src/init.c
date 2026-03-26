@@ -1,7 +1,12 @@
 
+// clang-format sorts includes unless SortIncludes: Never. However, the ordering
+// does matter here. So, we need to disable clang-format for safety.
+
+// clang-format off
 #include <stdint.h>
 #include <Rinternals.h>
 #include <R_ext/Parse.h>
+// clang-format on
 
 #include "rust/api.h"
 
@@ -39,9 +44,15 @@ SEXP savvy_encode_avif__impl(SEXP c_arg__nr, SEXP c_arg__height, SEXP c_arg__wid
     return handle_result(res);
 }
 
+SEXP savvy_print_with_viuer__impl(SEXP c_arg__nr, SEXP c_arg__height, SEXP c_arg__width, SEXP c_arg__term_cols) {
+    SEXP res = savvy_print_with_viuer__ffi(c_arg__nr, c_arg__height, c_arg__width, c_arg__term_cols);
+    return handle_result(res);
+}
+
 
 static const R_CallMethodDef CallEntries[] = {
     {"savvy_encode_avif__impl", (DL_FUNC) &savvy_encode_avif__impl, 5},
+    {"savvy_print_with_viuer__impl", (DL_FUNC) &savvy_print_with_viuer__impl, 4},
     {NULL, NULL, 0}
 };
 
@@ -49,6 +60,6 @@ void R_init_rravif(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 
-    // Functions for initialzation, if any.
+    // Functions for initialization, if any.
 
 }

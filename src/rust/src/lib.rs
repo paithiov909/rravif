@@ -1,6 +1,8 @@
+use image::{DynamicImage, RgbaImage};
 use ravif::{Encoder, Img, RGBA8};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
-use savvy::{savvy, IntegerSexp, NumericScalar, OwnedRawSexp};
+use savvy::{savvy, IntegerSexp, NumericScalar, OwnedLogicalSexp, OwnedRawSexp};
+use viuer::{print, Config};
 
 /// Encodes an AVIF image
 ///
@@ -27,6 +29,7 @@ fn encode_avif(
         .to_vec()
         .par_iter()
         .map(|px| {
+            let px = *px as u32;
             let a = (px >> 24) as u8;
             let b = ((px >> 16) & 0xff) as u8;
             let g = ((px >> 8) & 0xff) as u8;
@@ -41,4 +44,42 @@ fn encode_avif(
 
     let buf = OwnedRawSexp::try_from(img.avif_file)?;
     Ok(buf.into())
+}
+
+/// Print a native raster image to the terminal
+///
+/// @param nr a native raster image
+/// @param width width
+/// @param height height
+/// @param term_cols terminal width
+/// @noRd
+#[savvy]
+fn print_with_viuer(
+    nr: IntegerSexp,
+    height: i32,
+    width: i32,
+    term_cols: i32,
+) -> savvy::Result<savvy::Sexp> {
+    let nr = nr.to_vec();
+
+    let rgba = RgbaImage::from_fn(width as u32, height as u32, |x, y| {
+        let px = nr[x as usize + y as usize * width as usize] as u32;
+        let a = (px >> 24) as u8;
+        let b = ((px >> 16) & 0xff) as u8;
+        let g = ((px >> 8) & 0xff) as u8;
+        let r = (px & 0xff) as u8;
+
+        image::Rgba([r, g, b, a])
+    });
+
+    let img = DynamicImage::ImageRgba8(rgba);
+
+    let conf = Config {
+        width: Some(term_cols as u32),
+        ..Default::default()
+    };
+
+    print(&img, &conf)?;
+
+    OwnedLogicalSexp::try_from_scalar(true)?.into()
 }

@@ -2,6 +2,9 @@
 
 S3method("$<-",savvy_rravif__sealed)
 S3method("[[<-",savvy_rravif__sealed)
+export(clear)
 export(encode)
+export(print_nr)
 export(write_avif)
+importFrom(utils,flush.console)
 useDynLib(rravif, .registration = TRUE)
