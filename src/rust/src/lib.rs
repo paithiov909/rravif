@@ -81,5 +81,5 @@ fn print_with_viuer(
 
     print(&img, &conf)?;
 
-    OwnedLogicalSexp::try_from_scalar(true)?.into()
+    Ok(OwnedLogicalSexp::try_from_scalar(true)?.into())
 }
