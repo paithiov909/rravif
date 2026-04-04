@@ -47,8 +47,8 @@ print_nr <- function(x, clear_first = TRUE) {
   if (!interactive()) {
     return(invisible(x))
   }
-  if (!inherits(x, "nativeRaster") || length(x) != prod(dim(x)) || anyNA(x)) {
-    stop("`x` must be a nativeRaster object without missing values")
+  if (!inherits(x, "nativeRaster") || length(x) != prod(dim(x))) {
+    stop("`x` must be a nativeRaster object.")
   }
   if (clear_first) {
     clear()
