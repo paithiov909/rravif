@@ -1,7 +1,7 @@
 use image::{DynamicImage, RgbaImage};
 use ravif::{Encoder, Img, RGBA8};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
-use savvy::{savvy, IntegerSexp, NumericScalar, OwnedLogicalSexp, OwnedRawSexp};
+use savvy::{savvy, IntegerSexp, OwnedLogicalSexp, OwnedRawSexp};
 use viuer::{print, Config};
 
 /// Encodes an AVIF image
@@ -15,16 +15,11 @@ use viuer::{print, Config};
 #[savvy]
 fn encode_avif(
     nr: IntegerSexp,
-    height: NumericScalar,
-    width: NumericScalar,
-    quality: NumericScalar,
-    speed: NumericScalar,
+    height: i32,
+    width: i32,
+    quality: i32,
+    speed: i32,
 ) -> savvy::Result<savvy::Sexp> {
-    let height = height.as_f64() as usize;
-    let width = width.as_f64() as usize;
-    let quality = quality.as_f64() as f32;
-    let speed = speed.as_f64() as u8;
-
     let nr: Vec<RGBA8> = nr
         .to_vec()
         .par_iter()
@@ -38,9 +33,11 @@ fn encode_avif(
         })
         .collect();
 
-    let enc = Encoder::new().with_quality(quality).with_speed(speed);
+    let enc = Encoder::new()
+        .with_quality(quality as f32)
+        .with_speed(speed as u8);
 
-    let img = enc.encode_rgba(Img::new(nr.as_slice(), width, height))?;
+    let img = enc.encode_rgba(Img::new(nr.as_slice(), width as usize, height as usize))?;
 
     let buf = OwnedRawSexp::try_from(img.avif_file)?;
     Ok(buf.into())
