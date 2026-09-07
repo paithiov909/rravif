@@ -1,11 +1,11 @@
 Package: rravif
 Title: AVIF Image Encoder
-Version: 0.1.5
+Version: 0.1.6
 Authors@R:
     person("Akiru", "Kato", , "paithiov909@gmail.com", role = c("aut", "cre"))
 Description: Encodes images in AVIF format with 'ravif' Rust crate.
 License: MIT + file LICENSE
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
